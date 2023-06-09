@@ -9,7 +9,10 @@ function App(props) {
 
   const renderImg = () => {
     if(data.apiData) {
-      return <img style={{'width': '100vw'}} src={data.apiData.primaryImage} alt={data.apiData.title} />
+      return <div>
+        <h1 >{data.apiData.title}</h1>
+        <img style={{'width': '65vw', borderRadius: '15px'}} src={data.apiData.primaryImage} alt={data.apiData.title} />
+        </div>
     } else {
       return <p>image here</p>
     }
@@ -21,7 +24,7 @@ function App(props) {
 
 
   return (
-    <div className="App">
+    <div className="App" style={{background: '#ffe381', borderRadius:'20px', paddingTop:'10px'}}>
       <div>
         <button onClick={() => dispatch(fetchData())}>Thunk!</button>
         <button onClick={() => dispatch(clearData())}>Clear</button>
@@ -32,7 +35,7 @@ function App(props) {
         dispatch(inputId(Number(e.target.value)))
       }} />
       <div>
-        {data.objectId}
+        Id #{data.objectId} <br/>
         {renderImg()}
       </div>
     </div>
